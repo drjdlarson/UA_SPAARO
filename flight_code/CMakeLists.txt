@@ -266,6 +266,12 @@ FetchContent_Declare(
   GIT_TAG v1.1.0
 )
 FetchContent_MakeAvailable(matek3901)
+FetchContent_Declare(
+  terabee
+  GIT_REPOSITORY https://github.com/bolderflight/terabee
+  GIT_TAG v1.0.2
+)
+FetchContent_MakeAvailable(terabee)
 # Add the executable
 add_executable(flight
   include/global_defs.h

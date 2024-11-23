@@ -146,13 +146,22 @@ struct RadAltConfig {
   RadAlt device = RAD_ALT_NONE;
 };
 
-enum OpFlow {
-  OPFLOW_NONE,
-  OPFLOW_MATEK3901
+// enum OpFlow {
+//   OPFLOW_NONE,
+//   OPFLOW_MATEK3901
+// };
+
+// struct OpFlowConfig{
+//   OpFlow device = OPFLOW_NONE;
+// };
+
+enum Terabee {
+  TERABEE_NONE,
+  TERABEE_TERARANGER
 };
 
-struct OpFlowConfig{
-  OpFlow device = OPFLOW_NONE;
+struct TerabeeConfig{
+  Terabee device = TERABEE_NONE;
 };
 
 #if defined(__FMU_R_MINI_V1__) || defined(__FMU_R_V2__)
@@ -176,7 +185,8 @@ struct SensorConfig {
   PresConfig ext_pres4;
   #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
       defined(__FMU_R_MINI_V1__)
-  OpFlowConfig opflow;
+  // OpFlowConfig opflow;
+  TerabeeConfig terabee;
   RadAltConfig rad_alt;
   #endif
   #if defined(__FMU_R_MINI_V1__) || defined(__FMU_R_V2__)
@@ -379,15 +389,28 @@ struct MagData {
   float mag_ut[3];
 };
 
-struct OpFlowData {
+// struct OpFlowData {
+//   bool installed = false;
+//   bool healthy;
+//   bool new_data;
+//   int32_t mot_x;
+//   int32_t mot_y;
+//   uint8_t sur_qual;
+//   int32_t range_mm;
+//   uint8_t range_qual;
+// };
+
+struct TerabeeSensorData {
+  bool updated;
+  float range_m;
+};
+
+struct TerabeeData {
   bool installed = false;
   bool healthy;
   bool new_data;
-  int32_t mot_x;
-  int32_t mot_y;
-  uint8_t sur_qual;
-  int32_t range_mm;
-  uint8_t range_qual;
+  static constexpr int8_t MAX_CH = 8;
+  TerabeeSensorData terabee_sensor[MAX_CH];
 };
 
 struct GnssData {
