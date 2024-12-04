@@ -88,7 +88,7 @@ void SensorsInit(const SensorConfig &cfg) {
   ext_gnss1.Init(cfg.ext_gnss1);
   ext_gnss2.Init(cfg.ext_gnss2);
   // opflow.Init(cfg.opflow);
-  terabee.Init(cfg.terabee)
+  terabee.Init(cfg.terabee);
   rad_alt.Init(cfg.rad_alt);
   #endif
   #if defined(__FMU_R_V2__) || defined(__FMU_R_MINI_V1__)

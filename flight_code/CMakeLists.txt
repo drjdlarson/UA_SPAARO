@@ -296,6 +296,7 @@ add_executable(flight
   include/drivers/analog.h
   include/drivers/spaaro-vector-nav.h
   include/drivers/spaaro-matek3901.h
+  include/drivers/spaaro-terabee.h
   flight/flight.cc
   flight/msg.cc
   flight/${CONFIG_CC}
@@ -317,6 +318,7 @@ add_executable(flight
   drivers/analog.cc
   drivers/spaaro-vector-nav.cc
   drivers/spaaro-matek3901.cc
+  drivers/spaaro-terabee.cc
 )
 if (FMU STREQUAL "MINI-V1" OR FMU STREQUAL "V2")
   # FMU-R mini V1 | FMU-R-V2
@@ -378,6 +380,7 @@ target_link_libraries(flight
     pwm
     imap
     matek3901
+    terabee
 )
 target_compile_options(flight PUBLIC -std=c++20 -O3)
 # Add hex and upload targets

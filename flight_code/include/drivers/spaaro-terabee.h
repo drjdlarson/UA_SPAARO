@@ -34,14 +34,14 @@ class SpaaroTerabee {
  public:
   SpaaroTerabee(HardwareSerial *bus) : terabee_(bus) {}
   void Init(const TerabeeConfig &cfg);
-  void Read(TerabeeData * const terabee_data_);
+  void Read(TerabeeData * const data);
 
  private:
   bool installed_ = false;
   static constexpr int8_t UPDATE_PERIOD_MS_ = 20;
   elapsedMillis t_healthy_ms_;
   bfs::Terabee terabee_;
-  // bfs::Terabee::RangeData terabee_data_;
+  bfs::Terabee::RangeData terabee_data_;
 };
 
 #endif  // FLIGHT_CODE_INCLUDE_DRIVERS_TERABEE_H_

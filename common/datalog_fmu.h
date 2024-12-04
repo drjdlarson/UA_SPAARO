@@ -200,14 +200,35 @@ struct DatalogMsg {
   uint64_t rad_alt_snr : 8;
   uint64_t rad_alt_alt_m : 11;
 
-  uint64_t opflow_installed : 1;
-  uint64_t opflow_healthy : 1;
-  uint64_t opflow_new_data : 1;
-  uint64_t opflow_sur_qual : 8;
-  uint64_t opflow_range_qual : 8;
-  uint64_t opflow_mot_x : 15;
-  uint64_t opflow_mot_y : 15;
-  uint64_t opflow_range_mm : 15;
+//   uint64_t opflow_installed : 1;
+//   uint64_t opflow_healthy : 1;
+//   uint64_t opflow_new_data : 1;
+//   uint64_t opflow_sur_qual : 8;
+//   uint64_t opflow_range_qual : 8;
+//   uint64_t opflow_mot_x : 15;
+//   uint64_t opflow_mot_y : 15;
+//   uint64_t opflow_range_mm : 15;
+
+  uint64_t terabee_installed : 1;
+  uint64_t terabee_healthy : 1;
+  uint64_t terabee_new_data : 1;
+  uint64_t terabee_updated_1 : 1;
+  uint64_t terabee_updated_2 : 1;
+  uint64_t terabee_updated_3 : 1;
+  uint64_t terabee_updated_4 : 1;
+  uint64_t terabee_updated_5 : 1;
+  uint64_t terabee_updated_6 : 1;
+  uint64_t terabee_updated_7 : 1;
+  uint64_t terabee_updated_8 : 1;
+  uint64_t terabee_range_m_1 : 14;
+  uint64_t terabee_range_m_2 : 14;
+  uint64_t terabee_range_m_3 : 14;
+  uint64_t terabee_range_m_4 : 14;
+  uint64_t terabee_range_m_5 : 14;
+  uint64_t terabee_range_m_6 : 14;
+  uint64_t terabee_range_m_7 : 14;
+  uint64_t terabee_range_m_8 : 14;
+
   #endif
   uint64_t ain0_v : 12;
   uint64_t ain1_v : 12;

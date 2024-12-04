@@ -203,14 +203,35 @@ std::vector<uint8_t> rad_alt_healthy;
 std::vector<uint8_t> rad_alt_new_data;
 std::vector<uint8_t> rad_alt_snr;
 std::vector<float> rad_alt_alt_m;
-std::vector<uint8_t> opflow_installed;
-std::vector<uint8_t> opflow_healthy;
-std::vector<uint8_t> opflow_new_data;
-std::vector<uint8_t> opflow_sur_qual;
-std::vector<uint8_t> opflow_range_qual;
-std::vector<float> opflow_mot_x;
-std::vector<float> opflow_mot_y;
-std::vector<float> opflow_range_mm;
+// std::vector<uint8_t> opflow_installed;
+// std::vector<uint8_t> opflow_healthy;
+// std::vector<uint8_t> opflow_new_data;
+// std::vector<uint8_t> opflow_sur_qual;
+// std::vector<uint8_t> opflow_range_qual;
+// std::vector<float> opflow_mot_x;
+// std::vector<float> opflow_mot_y;
+// std::vector<float> opflow_range_mm;
+std::vector<uint8_t> terabee_installed;
+std::vector<uint8_t> terabee_healthy;
+std::vector<uint8_t> terabee_new_data;
+std::vector<uint8_t> terabee_updated_1;
+std::vector<uint8_t> terabee_updated_2;
+std::vector<uint8_t> terabee_updated_3;
+std::vector<uint8_t> terabee_updated_4;
+std::vector<uint8_t> terabee_updated_5;
+std::vector<uint8_t> terabee_updated_6;
+std::vector<uint8_t> terabee_updated_7;
+std::vector<uint8_t> terabee_updated_8;
+
+std::vector<float> terabee_range_m_1;
+std::vector<float> terabee_range_m_2;
+std::vector<float> terabee_range_m_3;
+std::vector<float> terabee_range_m_4;
+std::vector<float> terabee_range_m_5;
+std::vector<float> terabee_range_m_6;
+std::vector<float> terabee_range_m_7;
+std::vector<float> terabee_range_m_8;
+
 #endif
 std::vector<float> ain0_v;
 std::vector<float> ain1_v;
@@ -610,14 +631,36 @@ int main(int argc, char** argv) {
         rad_alt_new_data.push_back(datalog_msg_.rad_alt_new_data);
         rad_alt_snr.push_back(datalog_msg_.rad_alt_snr);
         rad_alt_alt_m.push_back(Scale(datalog_msg_.rad_alt_alt_m, 0.0f, 50.0f, 40.94f, 0.0f));
-        opflow_installed.push_back(datalog_msg_.opflow_installed);
-        opflow_healthy.push_back(datalog_msg_.opflow_healthy);
-        opflow_new_data.push_back(datalog_msg_.opflow_new_data);
-        opflow_sur_qual.push_back(datalog_msg_.opflow_sur_qual);
-        opflow_range_qual.push_back(datalog_msg_.opflow_range_qual);
-        opflow_mot_x.push_back(Scale(datalog_msg_.opflow_mot_x, -500.0f, 500.0f, 1.0f, 600.0f));
-        opflow_mot_y.push_back(Scale(datalog_msg_.opflow_mot_y, -500.0f, 500.0f, 1.0f, 600.0f));
-        opflow_range_mm.push_back(Scale(datalog_msg_.opflow_range_mm, -1.0f, 2000.0f, 1.0f, 3000.0f));
+        // opflow_installed.push_back(datalog_msg_.opflow_installed);
+        // opflow_healthy.push_back(datalog_msg_.opflow_healthy);
+        // opflow_new_data.push_back(datalog_msg_.opflow_new_data);
+        // opflow_sur_qual.push_back(datalog_msg_.opflow_sur_qual);
+        // opflow_range_qual.push_back(datalog_msg_.opflow_range_qual);
+        // opflow_mot_x.push_back(Scale(datalog_msg_.opflow_mot_x, -500.0f, 500.0f, 1.0f, 600.0f));
+        // opflow_mot_y.push_back(Scale(datalog_msg_.opflow_mot_y, -500.0f, 500.0f, 1.0f, 600.0f));
+        // opflow_range_mm.push_back(Scale(datalog_msg_.opflow_range_mm, -1.0f, 2000.0f, 1.0f, 3000.0f));
+        
+        terabee_installed.push_back(datalog_msg_.terabee_installed);
+        terabee_healthy.push_back(datalog_msg_.terabee_healthy);
+        terabee_new_data.push_back(datalog_msg_.terabee_new_data);
+        terabee_updated_1.push_back(datalog_msg_.terabee_updated_1);
+        terabee_updated_2.push_back(datalog_msg_.terabee_updated_2);
+        terabee_updated_3.push_back(datalog_msg_.terabee_updated_3);
+        terabee_updated_4.push_back(datalog_msg_.terabee_updated_4);
+        terabee_updated_5.push_back(datalog_msg_.terabee_updated_5);
+        terabee_updated_6.push_back(datalog_msg_.terabee_updated_6);
+        terabee_updated_7.push_back(datalog_msg_.terabee_updated_7);
+        terabee_updated_8.push_back(datalog_msg_.terabee_updated_8);
+
+        terabee_range_m_1.push_back(Scale(datalog_msg_.terabee_range_m_1, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_2.push_back(Scale(datalog_msg_.terabee_range_m_2, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_3.push_back(Scale(datalog_msg_.terabee_range_m_3, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_4.push_back(Scale(datalog_msg_.terabee_range_m_4, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_5.push_back(Scale(datalog_msg_.terabee_range_m_5, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_6.push_back(Scale(datalog_msg_.terabee_range_m_6, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_7.push_back(Scale(datalog_msg_.terabee_range_m_7, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_8.push_back(Scale(datalog_msg_.terabee_range_m_8, 0.0f, 100.0f, 1.0f, 3000.0f));
+
         #endif
         ain0_v.push_back(Scale(datalog_msg_.ain0_v, 0.0f, 3.3f, 1240.90909090909f, 0.0f));
         ain1_v.push_back(Scale(datalog_msg_.ain1_v, 0.0f, 3.3f, 1240.90909090909f, 0.0f));
@@ -1062,14 +1105,36 @@ int main(int argc, char** argv) {
   bfs::MatWrite("rad_alt_snr", rad_alt_snr, output);
   bfs::MatWrite("rad_alt_alt_m", rad_alt_alt_m, output);
 
-  bfs::MatWrite("opflow_installed", opflow_installed, output);
-  bfs::MatWrite("opflow_healthy", opflow_healthy, output);
-  bfs::MatWrite("opflow_new_data", opflow_new_data, output);
-  bfs::MatWrite("opflow_sur_qual", opflow_sur_qual, output);
-  bfs::MatWrite("opflow_range_qual", opflow_range_qual, output);
-  bfs::MatWrite("opflow_mot_x", opflow_mot_x, output);
-  bfs::MatWrite("opflow_mot_y", opflow_mot_y, output);
-  bfs::MatWrite("opflow_range_mm", opflow_range_mm, output);
+  // bfs::MatWrite("opflow_installed", opflow_installed, output);
+  // bfs::MatWrite("opflow_healthy", opflow_healthy, output);
+  // bfs::MatWrite("opflow_new_data", opflow_new_data, output);
+  // bfs::MatWrite("opflow_sur_qual", opflow_sur_qual, output);
+  // bfs::MatWrite("opflow_range_qual", opflow_range_qual, output);
+  // bfs::MatWrite("opflow_mot_x", opflow_mot_x, output);
+  // bfs::MatWrite("opflow_mot_y", opflow_mot_y, output);
+  // bfs::MatWrite("opflow_range_mm", opflow_range_mm, output);
+
+  bfs::MatWrite("terabee_installed", terabee_installed, output);
+  bfs::MatWrite("terabee_healthy", terabee_healthy, output);
+  bfs::MatWrite("terabee_new_data", terabee_new_data, output);
+  bfs::MatWrite("terabee_updated_1", terabee_updated_1, output);
+  bfs::MatWrite("terabee_updated_2", terabee_updated_2, output);
+  bfs::MatWrite("terabee_updated_3", terabee_updated_3, output);
+  bfs::MatWrite("terabee_updated_4", terabee_updated_4, output);
+  bfs::MatWrite("terabee_updated_5", terabee_updated_5, output);
+  bfs::MatWrite("terabee_updated_6", terabee_updated_6, output);
+  bfs::MatWrite("terabee_updated_7", terabee_updated_7, output);
+  bfs::MatWrite("terabee_updated_8", terabee_updated_8, output);
+  
+  bfs::MatWrite("terabee_range_m_1", terabee_range_m_1, output);
+  bfs::MatWrite("terabee_range_m_2", terabee_range_m_2, output);
+  bfs::MatWrite("terabee_range_m_3", terabee_range_m_3, output);
+  bfs::MatWrite("terabee_range_m_4", terabee_range_m_4, output);
+  bfs::MatWrite("terabee_range_m_5", terabee_range_m_5, output);
+  bfs::MatWrite("terabee_range_m_6", terabee_range_m_6, output);
+  bfs::MatWrite("terabee_range_m_7", terabee_range_m_7, output);
+  bfs::MatWrite("terabee_range_m_8", terabee_range_m_8, output);
+  
   #endif
   bfs::MatWrite("ain0_v", ain0_v, output);
   bfs::MatWrite("ain1_v", ain1_v, output);

@@ -189,12 +189,12 @@ Aircraft.Control.yaw_rate_max = deg2rad(180);
 % cause some motors to slow down too much that hover cannot be maintained
 
 % Yaw rate controller PID gains
-Aircraft.Control.P_yaw_rate = 0.3;
-Aircraft.Control.I_yaw_rate = 0.3;
-Aircraft.Control.D_yaw_rate = 0.01;
+Aircraft.Control.P_yaw_rate = 0.4;
+Aircraft.Control.I_yaw_rate = 0;
+Aircraft.Control.D_yaw_rate = 0.03;
 
 % Yaw rate D Controller LPFT cutoff frequency [Hz]
-Aircraft.Control.D_yaw_FLTR_CTOFF = 10;
+Aircraft.Control.D_yaw_FLTR_CTOFF = 40;
 
 %% Rate controller parameters
 % Max att rate [radps]

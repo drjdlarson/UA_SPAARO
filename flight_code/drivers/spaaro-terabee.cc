@@ -32,7 +32,7 @@
 
 void SpaaroTerabee::Init(const TerabeeConfig &cfg) {
   if (cfg.device != TERABEE_NONE) {
-    if (!opflow_.Begin()) {
+    if (!terabee_.Begin()) {
       MsgError("Unable to establish communication with terabee");
     } else {
       installed_ = true;
@@ -46,18 +46,14 @@ void SpaaroTerabee::Read(TerabeeData * const data) {
   data->installed = installed_;
   if (data->installed) {
     // data->new_data = terabee_.Read();
-    if (terabee_.Read(&data)) {
+    if (terabee_.Read(&terabee_data_)) {
       t_healthy_ms_ = 0;
-
-      for (int8_t i = 0; i < data->MAX_CH; i++) {
-        Serial.print("Sensor: ");
-        Serial.print(i);
-        Serial.print("\tNew Data: ");
-        Serial.print(data.sensor[i].updated);
-        Serial.print("\tRange (m): ");
-        Serial.println(data.sensor[i].range_m);
+      data->new_data = true;
+      for (int i=0; i<data->MAX_CH; i++) {
+        data->sensor[i].updated = terabee_data_.sensor[i].updated;
+        data->sensor[i].range_m = terabee_data_.sensor[i].range_m;
       }
-      
+
       data->healthy = (t_healthy_ms_ < 10 * UPDATE_PERIOD_MS_);
     }
   }
