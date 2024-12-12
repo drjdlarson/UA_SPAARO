@@ -10,12 +10,13 @@
 % Vehicle
 % vehicle = 'sig_kadet';
 % vehicle = 'malt';
-vehicle = 'session_v0';
+% vehicle = 'session_v0';
 % vehicle = 'super';
 % vehicle = 'lambu';
+vehicle = 'seldom';
 
 % FMU-R version
-if strcmpi(vehicle, 'malt') || strcmpi(vehicle, 'lambu')
+if strcmpi(vehicle, 'malt') || strcmpi(vehicle, 'lambu') || strcmpi(vehicle, 'seldom')
     fmu_version = "mini";
 elseif strcmpi(vehicle, 'ale')
     fmu_version = "v1";
@@ -60,7 +61,7 @@ InitCond.alt_m = 67.117600;
 InitCond.ned_pos_m = [0 0 -100];
 
 % [u, v, w]
-InitCond.body_vel_mps = [0.5, 0.1, 0.1];
+InitCond.body_vel_mps = [0 0 0];
 
 % [roll, pitch, yaw]
 InitCond.euler_rad = [0 0 0];

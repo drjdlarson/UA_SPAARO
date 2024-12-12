@@ -139,6 +139,8 @@ if (vms_only)
         % lambu()
     elseif strcmp(vehicle,'super')
         super()
+    elseif strcmp(vehicle,'seldom')
+        seldom()
     end
 else
     if any(strcmp(vehicle, {'super', 'malt', 'lambu'}))
@@ -147,6 +149,8 @@ else
         ground_sim();
     elseif any(strcmpi(vehicle, {'session_v0'}))
         quadplane_sim();
+    elseif any(strcmpi(vehicle, {'seldom'}))
+        seldom_sim();
     end
 end
 % double_integrator_sim();

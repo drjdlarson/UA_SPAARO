@@ -1,4 +1,5 @@
 % Trims simulation
+% Note: Not currently working for seldom.
 %
 % Brian R Taylor
 % brian.taylor@bolderflight.com
@@ -30,7 +31,11 @@ InitCond.lon_rad = deg2rad(Target.lon_deg);
 InitCond.engine_speed_radps = 827 * ones(Aircraft.Motor.nMotor, 1);  % Initial guess to avoid divide by zero
 
 %% Create operating point specifications for sim
-op_spec = operspec('trim_sim');
+if strcmp(vehicle,'seldom')
+    op_spec = operspec('seldom_trim_sim');
+else
+    op_spec = operspec('trim_sim');
+end
 
 %% State specifications
 %op_spec.States(1).StateName = 'omega_engine';
