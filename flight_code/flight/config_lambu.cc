@@ -49,9 +49,9 @@ AircraftConfig config = {
     // .opflow = {
     //   .device = OPFLOW_MATEK3901
     // },
-    .terabee = {
-      .device = TERABEE_TERARANGER
-    },
+    // .terabee = {
+    //   .device = TERABEE_TERARANGER
+    // },
     .power_module = {
       .volts_per_volt = 2.87f,
       .amps_per_volt = 50.0f

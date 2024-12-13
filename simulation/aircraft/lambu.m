@@ -201,27 +201,27 @@ Aircraft.Control.D_yaw_FLTR_CTOFF = 40;
 Aircraft.Control.att_rate_max = deg2rad(220);
 
 % Att rate controller PID gains
-Aircraft.Control.P_att_rate = 0.3;
-Aircraft.Control.I_att_rate = 1;
-Aircraft.Control.D_att_rate = 0.025;
+Aircraft.Control.P_att_rate = 0.6;
+Aircraft.Control.I_att_rate = 0.2;
+Aircraft.Control.D_att_rate = 0.02;
 
 % Att rate D Controller LPFT cutoff frequency [Hz]
 Aircraft.Control.D_att_FLTR_CTOFF = 40;
 
 % Att feed forward gain
-Aircraft.Control.FF_att_rate = 0.2;
+Aircraft.Control.FF_att_rate = 0;
 
 %% Heading controller parameters
-Aircraft.Control.P_heading = 6; 
+Aircraft.Control.P_heading = 0.2; 
 
 %% Attitude angle controller parameters
 % Max att angle [rad]
 Aircraft.Control.att_angle_lim = deg2rad(10);  
 
 % Att cmd controller gains
-Aircraft.Control.P_att_angle = 6;
-Aircraft.Control.I_att_angle = 2;
-Aircraft.Control.D_att_angle = 0.1;
+Aircraft.Control.P_att_angle = 0.3;
+Aircraft.Control.I_att_angle = 1.2;
+Aircraft.Control.D_att_angle = 0.025;
 
 %% Outer to inner loop conversion
 % Max G by the drone 
