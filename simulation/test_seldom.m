@@ -35,48 +35,54 @@ data_idx.p_err = 15;
 data_idx.q_err = 17;
 data_idx.r_err = 18;
 
-t = data_out.simout.Time;
+t = data_out.vmsout.Time;
 f = figure;
 
 ax(1) = subplot(3,2,1); hold on;
-plot(t,data_out.simout.Data(:,data_idx.u_cmd),'DisplayName','u cmd')
-plot(t,data_out.simout.Data(:,data_idx.u),'DisplayName','u')
+plot(t,data_out.vmsout.Data(:,data_idx.u_cmd),'DisplayName','u cmd','LineWidth',2)
+% plot(t,data_out.vmsout.Data(:,data_idx.u),'DisplayName','u')
+plot(t,data_out.stateout.Body_Velocity__m_s_.Data(:,1),'DisplayName','u','LineWidth',2)
 ylabel('m/s')
 legend
 axis([0.1 inf -inf inf])
 
 ax(3) = subplot(3,2,3); hold on;
-plot(t,data_out.simout.Data(:,data_idx.v_cmd),'DisplayName','v cmd')
-plot(t,data_out.simout.Data(:,data_idx.v),'DisplayName','v')
+plot(t,data_out.vmsout.Data(:,data_idx.v_cmd),'DisplayName','v cmd','LineWidth',2)
+% plot(t,data_out.vmsout.Data(:,data_idx.v),'DisplayName','v')
+plot(t,data_out.stateout.Body_Velocity__m_s_.Data(:,2),'DisplayName','v','LineWidth',2)
 ylabel('m/s')
 legend
 axis([0.1 inf -inf inf])
 
 ax(5) = subplot(3,2,5); hold on;
-plot(t,data_out.simout.Data(:,data_idx.w_cmd),'DisplayName','w cmd')
-plot(t,data_out.simout.Data(:,data_idx.w),'DisplayName','w')
+plot(t,data_out.vmsout.Data(:,data_idx.w_cmd),'DisplayName','w cmd','LineWidth',2)
+% plot(t,data_out.vmsout.Data(:,data_idx.w),'DisplayName','w')
+plot(t,data_out.stateout.Body_Velocity__m_s_.Data(:,3),'DisplayName','w','LineWidth',2)
 ylabel('m/s')
 legend
 axis([0.1 inf -inf inf])
 xlabel('Time [s]')
 
 ax(2) = subplot(3,2,2); hold on;
-plot(t,data_out.simout.Data(:,data_idx.p_cmd)*180/pi,'DisplayName','p cmd')
-plot(t,data_out.simout.Data(:,data_idx.p)*180/pi,'DisplayName','p')
+plot(t,data_out.vmsout.Data(:,data_idx.p_cmd)*180/pi,'DisplayName','p cmd','LineWidth',2)
+% plot(t,data_out.vmsout.Data(:,data_idx.p)*180/pi,'DisplayName','p')
+plot(t,data_out.stateout.Body_Rotational_Rate__rad_s_.Data(:,1)*180/pi,'DisplayName','p','LineWidth',2)
 ylabel('deg/s')
 legend
 axis([0.1 inf -inf inf])
 
 ax(4) = subplot(3,2,4); hold on;
-plot(t,data_out.simout.Data(:,data_idx.q_cmd)*180/pi,'DisplayName','q cmd')
-plot(t,data_out.simout.Data(:,data_idx.q)*180/pi,'DisplayName','q')
+plot(t,data_out.vmsout.Data(:,data_idx.q_cmd)*180/pi,'DisplayName','q cmd','LineWidth',2)
+% plot(t,data_out.vmsout.Data(:,data_idx.q)*180/pi,'DisplayName','q')
+plot(t,data_out.stateout.Body_Rotational_Rate__rad_s_.Data(:,2)*180/pi,'DisplayName','q','LineWidth',2)
 ylabel('deg/s')
 legend
 axis([0.1 inf -inf inf])
 
 ax(6) = subplot(3,2,6); hold on;
-plot(t,data_out.simout.Data(:,data_idx.r_cmd)*180/pi,'DisplayName','r cmd')
-plot(t,data_out.simout.Data(:,data_idx.r)*180/pi,'DisplayName','r')
+plot(t,data_out.vmsout.Data(:,data_idx.r_cmd)*180/pi,'DisplayName','r cmd','LineWidth',2)
+% plot(t,data_out.vmsout.Data(:,data_idx.r)*180/pi,'DisplayName','r')
+plot(t,data_out.stateout.Body_Rotational_Rate__rad_s_.Data(:,3)*180/pi,'DisplayName','r','LineWidth',2)
 ylabel('deg/s')
 legend
 axis([0.1 inf -inf inf])
