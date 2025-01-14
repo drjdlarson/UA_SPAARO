@@ -1,8 +1,8 @@
 /*
-* Tuan Luong    
-* tdluong@crimson.ua.edu
+* Arden Markin    
+* amarkin@crimson.ua.edu
 * 
-* Copyright (c) 2022 Bolder Flight Systems Inc
+* Copyright (c) 2024 Bolder Flight Systems Inc
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the “Software”), to
@@ -26,14 +26,14 @@
 
 #include "global_defs.h"
 #include "hardware_defs.h"
-#include "matek3901.h"
+#include "tfmini.h" 
 #include "flight/msg.h"
-#include "drivers/spaaro-matek3901.h"
+#include "drivers/spaaro-tfmini.h"
 
-void SpaaroMatek3901::Init(const OpFlowConfig &cfg) {
-  if (cfg.device != OPFLOW_NONE) {
-    if (!opflow_.Begin()) {
-      MsgError("Unable to establish communication with optical flow");
+void SpaaroTFMini::Init(const TFMiniConfig &cfg) {
+  if (cfg.device != TFMini_NONE) {
+    if (!tfmini_.Begin()) {
+      MsgError("Unable to establish communication with tfmini");
     } else {
       installed_ = true;
     }
@@ -42,17 +42,14 @@ void SpaaroMatek3901::Init(const OpFlowConfig &cfg) {
   }
 }
 
-void SpaaroMatek3901::Read(OpFlowData * const data) {
+void SpaaroTFMini::Read(TFMiniData * const data) {
   data->installed = installed_;
   if (data->installed) {
-    data->new_data = opflow_.Read();
+    data->new_data = tfmini_.Read();
     if (data->new_data) {
       t_healthy_ms_ = 0;
-      data->sur_qual = opflow_.sur_qual();
-      data->range_qual = opflow_.range_qual();
-      data->mot_x = opflow_.mot_x();
-      data->mot_y = opflow_.mot_y();
-      data->range_mm = opflow_.range_mm();
+      data->range_cm = tfmini_.dist();
+      data->range_intensity = tfmini_.strength();
     }
     data->healthy = (t_healthy_ms_ < 10 * UPDATE_PERIOD_MS_);
   }

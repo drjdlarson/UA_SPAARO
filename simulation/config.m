@@ -10,9 +10,9 @@
 % Vehicle
 % vehicle = 'sig_kadet';
 % vehicle = 'malt';
-vehicle = 'session_v0';
+% vehicle = 'session_v0';
 % vehicle = 'super';
-% vehicle = 'lambu';
+vehicle = 'lambu';
 
 % FMU-R version
 if strcmpi(vehicle, 'malt') || strcmpi(vehicle, 'lambu')
@@ -26,7 +26,7 @@ else
     throw(ME);
 end
 
-vms_only = false;
+vms_only = true;
 
 
 %% Target trim conditions

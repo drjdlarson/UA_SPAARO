@@ -203,14 +203,23 @@ std::vector<uint8_t> rad_alt_healthy;
 std::vector<uint8_t> rad_alt_new_data;
 std::vector<uint8_t> rad_alt_snr;
 std::vector<float> rad_alt_alt_m;
-std::vector<uint8_t> opflow_installed;
-std::vector<uint8_t> opflow_healthy;
-std::vector<uint8_t> opflow_new_data;
-std::vector<uint8_t> opflow_sur_qual;
-std::vector<uint8_t> opflow_range_qual;
-std::vector<float> opflow_mot_x;
-std::vector<float> opflow_mot_y;
-std::vector<float> opflow_range_mm;
+// std::vector<uint8_t> opflow_installed;
+// std::vector<uint8_t> opflow_healthy;
+// std::vector<uint8_t> opflow_new_data;
+// std::vector<uint8_t> opflow_sur_qual;
+// std::vector<uint8_t> opflow_range_qual;
+// std::vector<float> opflow_mot_x;
+// std::vector<float> opflow_mot_y;
+// std::vector<float> opflow_range_mm;
+std::vector<uint8_t> tfmini_installed;
+std::vector<uint8_t> tfmini_healthy;
+std::vector<uint8_t> tfmini_new_data;
+std::vector<float> tfmini_intensity;
+std::vector<float> tfmini_range;
+std::vector<uint8_t> ercf_installed;
+std::vector<uint8_t> ercf_healthy;
+std::vector<uint8_t> ercf_new_data;
+std::vector<float> ercf_angle;
 #endif
 std::vector<float> ain0_v;
 std::vector<float> ain1_v;
@@ -610,14 +619,26 @@ int main(int argc, char** argv) {
         rad_alt_new_data.push_back(datalog_msg_.rad_alt_new_data);
         rad_alt_snr.push_back(datalog_msg_.rad_alt_snr);
         rad_alt_alt_m.push_back(Scale(datalog_msg_.rad_alt_alt_m, 0.0f, 50.0f, 40.94f, 0.0f));
-        opflow_installed.push_back(datalog_msg_.opflow_installed);
-        opflow_healthy.push_back(datalog_msg_.opflow_healthy);
-        opflow_new_data.push_back(datalog_msg_.opflow_new_data);
-        opflow_sur_qual.push_back(datalog_msg_.opflow_sur_qual);
-        opflow_range_qual.push_back(datalog_msg_.opflow_range_qual);
-        opflow_mot_x.push_back(Scale(datalog_msg_.opflow_mot_x, -500.0f, 500.0f, 1.0f, 600.0f));
-        opflow_mot_y.push_back(Scale(datalog_msg_.opflow_mot_y, -500.0f, 500.0f, 1.0f, 600.0f));
-        opflow_range_mm.push_back(Scale(datalog_msg_.opflow_range_mm, -1.0f, 2000.0f, 1.0f, 3000.0f));
+        // opflow_installed.push_back(datalog_msg_.opflow_installed);
+        // opflow_healthy.push_back(datalog_msg_.opflow_healthy);
+        // opflow_new_data.push_back(datalog_msg_.opflow_new_data);
+        // opflow_sur_qual.push_back(datalog_msg_.opflow_sur_qual);
+        // opflow_range_qual.push_back(datalog_msg_.opflow_range_qual);
+        // opflow_mot_x.push_back(Scale(datalog_msg_.opflow_mot_x, -500.0f, 500.0f, 1.0f, 600.0f));
+        // opflow_mot_y.push_back(Scale(datalog_msg_.opflow_mot_y, -500.0f, 500.0f, 1.0f, 600.0f));
+        // opflow_range_mm.push_back(Scale(datalog_msg_.opflow_range_mm, -1.0f, 2000.0f, 1.0f, 3000.0f));
+        
+        tfmini_installed.push_back(datalog_msg_.tfmini_installed);
+        tfmini_healthy.push_back(datalog_msg_.tfmini_healthy);
+        tfmini_new_data.push_back(datalog_msg_.tfmini_new_data);
+        tfmini_intensity.push_back(Scale(datalog_msg_.tfmini_intensity, 0.0f, 10000.0f, 1.0f, 5000.0f));
+        tfmini_range.push_back(Scale(datalog_msg_.tfmini_range, 0.0f, 300.0f, 1.0f, 0.0f));
+        
+        ercf_installed.push_back(datalog_msg_.ercf_installed);
+        ercf_healthy.push_back(datalog_msg_.ercf_healthy);
+        ercf_new_data.push_back(datalog_msg_.ercf_new_data);
+        ercf_angle.push_back(Scale(datalog_msg_.ercf_angle, -360.0f, 360.0f, 1.0f, 400.0f));
+
         #endif
         ain0_v.push_back(Scale(datalog_msg_.ain0_v, 0.0f, 3.3f, 1240.90909090909f, 0.0f));
         ain1_v.push_back(Scale(datalog_msg_.ain1_v, 0.0f, 3.3f, 1240.90909090909f, 0.0f));
@@ -1062,14 +1083,26 @@ int main(int argc, char** argv) {
   bfs::MatWrite("rad_alt_snr", rad_alt_snr, output);
   bfs::MatWrite("rad_alt_alt_m", rad_alt_alt_m, output);
 
-  bfs::MatWrite("opflow_installed", opflow_installed, output);
-  bfs::MatWrite("opflow_healthy", opflow_healthy, output);
-  bfs::MatWrite("opflow_new_data", opflow_new_data, output);
-  bfs::MatWrite("opflow_sur_qual", opflow_sur_qual, output);
-  bfs::MatWrite("opflow_range_qual", opflow_range_qual, output);
-  bfs::MatWrite("opflow_mot_x", opflow_mot_x, output);
-  bfs::MatWrite("opflow_mot_y", opflow_mot_y, output);
-  bfs::MatWrite("opflow_range_mm", opflow_range_mm, output);
+  // bfs::MatWrite("opflow_installed", opflow_installed, output);
+  // bfs::MatWrite("opflow_healthy", opflow_healthy, output);
+  // bfs::MatWrite("opflow_new_data", opflow_new_data, output);
+  // bfs::MatWrite("opflow_sur_qual", opflow_sur_qual, output);
+  // bfs::MatWrite("opflow_range_qual", opflow_range_qual, output);
+  // bfs::MatWrite("opflow_mot_x", opflow_mot_x, output);
+  // bfs::MatWrite("opflow_mot_y", opflow_mot_y, output);
+  // bfs::MatWrite("opflow_range_mm", opflow_range_mm, output);
+
+  bfs:MatWrite("tfmini_installed", tfmini_installed, output);
+  bfs:MatWrite("tfmini_healthy", tfmini_healthy, output);
+  bfs:MatWrite("tfmini_new_data", tfmini_new_data, output);
+  bfs:MatWrite("tfmini_range", tfmini_range, output);
+  bfs:MatWrite("tfmini_intensity", tfmini_intensity, output);
+  
+  bfs:MatWrite("ercf_installed", ercf_installed, output);
+  bfs:MatWrite("ercf_healthy", ercf_healthy, output);
+  bfs:MatWrite("ercf_new_data", ercf_new_data, output);
+  bfs:MatWrite("ercf_angle", ercf_angle, output);
+  
   #endif
   bfs::MatWrite("ain0_v", ain0_v, output);
   bfs::MatWrite("ain1_v", ain1_v, output);

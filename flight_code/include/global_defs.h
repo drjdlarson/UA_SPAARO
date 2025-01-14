@@ -146,13 +146,31 @@ struct RadAltConfig {
   RadAlt device = RAD_ALT_NONE;
 };
 
-enum OpFlow {
-  OPFLOW_NONE,
-  OPFLOW_MATEK3901
+// enum OpFlow {
+//   OPFLOW_NONE,
+//   OPFLOW_MATEK3901
+// };
+
+// struct OpFlowConfig{
+//   OpFlow device = OPFLOW_NONE;
+// };
+
+enum TFMini {
+  TFMini_NONE,
+  TFMini_MAKERFOCUS
 };
 
-struct OpFlowConfig{
-  OpFlow device = OPFLOW_NONE;
+struct TFMiniConfig{
+  TFMini device = TFMini_NONE;
+};
+
+enum ERCF {
+  ERCF_NONE,
+  ERCF_P3America
+};
+
+struct ERCFConfig{
+  ERCF device = ERCF_NONE;
 };
 
 #if defined(__FMU_R_MINI_V1__) || defined(__FMU_R_V2__)
@@ -176,7 +194,9 @@ struct SensorConfig {
   PresConfig ext_pres4;
   #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
       defined(__FMU_R_MINI_V1__)
-  OpFlowConfig opflow;
+  // OpFlowConfig opflow;
+  TFMiniConfig tfmini;
+  ERCFConfig ercf;
   RadAltConfig rad_alt;
   #endif
   #if defined(__FMU_R_MINI_V1__) || defined(__FMU_R_V2__)
@@ -379,15 +399,30 @@ struct MagData {
   float mag_ut[3];
 };
 
-struct OpFlowData {
+// struct OpFlowData {
+//   bool installed = false;
+//   bool healthy;
+//   bool new_data;
+//   int32_t mot_x;
+//   int32_t mot_y;
+//   uint8_t sur_qual;
+//   int32_t range_mm;
+//   uint8_t range_qual;
+// };
+
+struct TFMiniData {
   bool installed = false;
   bool healthy;
   bool new_data;
-  int32_t mot_x;
-  int32_t mot_y;
-  uint8_t sur_qual;
-  int32_t range_mm;
-  uint8_t range_qual;
+  uint32_t range_cm;
+  uint32_t range_intensity;
+};
+
+struct ERCFData {
+  bool installed = false;
+  bool healthy;
+  bool new_data;
+  float angle;
 };
 
 struct GnssData {
@@ -462,7 +497,9 @@ struct SensorData {
   PresData ext_pres4;
   #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
       defined(__FMU_R_MINI_V1__)
-  OpFlowData opflow;
+  // OpFlowData opflow;
+  TFMiniData tfmini;
+  ERCFData ercf;
   RadAltData rad_alt;
   #endif
   AnalogData analog;

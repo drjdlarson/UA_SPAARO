@@ -1,8 +1,8 @@
 /*
-* Tuan Luong    
-* tdluong@crimson.ua.edu
+* Arden Markin    
+* markin@crimson.ua.edu
 * 
-* Copyright (c) 2022 Bolder Flight Systems Inc
+* Copyright (c) 2024 Bolder Flight Systems Inc
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the “Software”), to
@@ -23,24 +23,33 @@
 * IN THE SOFTWARE.
 */
 
-#ifndef FLIGHT_CODE_INCLUDE_DRIVERS_MATEK3901_H_
-#define FLIGHT_CODE_INCLUDE_DRIVERS_MATEK3901_H_
 
 #include "global_defs.h"
 #include "hardware_defs.h"
-#include "matek3901.h"
+#include "ercf.h"
+#include "flight/msg.h"
+#include "drivers/spaaro-ercf.h"
 
-class SpaaroMatek3901 {
- public:
-  SpaaroMatek3901(HardwareSerial *bus) : opflow_(bus) {}
-  void Init(const OpFlowConfig &cfg);
-  void Read(OpFlowData * const data);
+void SpaaroERCF::Init(const ERCFConfig &cfg) {
+  if (cfg.device != ERCF_NONE) {
+    if (!ercf_.Begin()) {
+      MsgError("Unable to establish communication with tfmini");
+    } else {
+      installed_ = true;
+    }
+  } else {
+    installed_ = false;
+  }
+}
 
- private:
-  bool installed_ = false;
-  static constexpr int8_t UPDATE_PERIOD_MS_ = 20;
-  elapsedMillis t_healthy_ms_;
-  bfs::Matek3901 opflow_;
-};
-
-#endif  // FLIGHT_CODE_INCLUDE_DRIVERS_MATEK3901_H_
+void SpaaroERCF::Read(ERCFData * const data) {
+  data->installed = installed_;
+  if (data->installed) {
+    data->new_data = ercf_.Read();
+    if (data->new_data) {
+      t_healthy_ms_ = 0;
+      data->angle = ercf_.angle();
+    }
+    data->healthy = (t_healthy_ms_ < 10 * UPDATE_PERIOD_MS_);
+  }
+}

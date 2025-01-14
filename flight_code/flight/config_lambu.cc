@@ -49,6 +49,12 @@ AircraftConfig config = {
     // .opflow = {
     //   .device = OPFLOW_MATEK3901
     // },
+    .tfmini = {
+      .device = TFMini_MAKERFOCUS
+    },
+    .ercf = {
+      .device = ERCF_P3America
+    },
     .power_module = {
       .volts_per_volt = 2.87f,
       .amps_per_volt = 50.0f

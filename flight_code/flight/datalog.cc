@@ -287,17 +287,36 @@ void DatalogAdd(const AircraftData &ref) {
   #endif
   
 
-  /* OPTICAL FLOW */
+  // /* OPTICAL FLOW */
+  // #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
+  //     defined(__FMU_R_MINI_V1__)
+  // datalog_msg_.opflow_installed = ref.sensor.opflow.installed;
+  // datalog_msg_.opflow_healthy = ref.sensor.opflow.healthy;
+  // datalog_msg_.opflow_new_data = ref.sensor.opflow.new_data;
+  // datalog_msg_.opflow_sur_qual = ref.sensor.opflow.sur_qual;
+  // datalog_msg_.opflow_range_qual = ref.sensor.opflow.range_qual;
+  // datalog_msg_.opflow_mot_x = Scale(float(ref.sensor.opflow.mot_x), -500.0f, 500.0f, 1.0f, 600.0f);
+  // datalog_msg_.opflow_mot_y = Scale(float(ref.sensor.opflow.mot_y), -500.0f, 500.0f, 1.0f, 600.0f);
+  // datalog_msg_.opflow_range_mm = Scale(float(ref.sensor.opflow.range_mm), -1.0f, 2000.0f, 1.0f, 3000.0f);
+  // #endif
+
+    /* RangeFinder*/
   #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
       defined(__FMU_R_MINI_V1__)
-  datalog_msg_.opflow_installed = ref.sensor.opflow.installed;
-  datalog_msg_.opflow_healthy = ref.sensor.opflow.healthy;
-  datalog_msg_.opflow_new_data = ref.sensor.opflow.new_data;
-  datalog_msg_.opflow_sur_qual = ref.sensor.opflow.sur_qual;
-  datalog_msg_.opflow_range_qual = ref.sensor.opflow.range_qual;
-  datalog_msg_.opflow_mot_x = Scale(float(ref.sensor.opflow.mot_x), -500.0f, 500.0f, 1.0f, 600.0f);
-  datalog_msg_.opflow_mot_y = Scale(float(ref.sensor.opflow.mot_y), -500.0f, 500.0f, 1.0f, 600.0f);
-  datalog_msg_.opflow_range_mm = Scale(float(ref.sensor.opflow.range_mm), -1.0f, 2000.0f, 1.0f, 3000.0f);
+  datalog_msg_.tfmini_installed = ref.sensor.tfmini.installed;
+  datalog_msg_.tfmini_healthy = ref.sensor.tfmini.healthy;
+  datalog_msg_.tfmini_new_data = ref.sensor.tfmini.new_data;
+  datalog_msg_.tfmini_intensity = Scale(float(ref.sensor.tfmini.range_intensity), 0.0f, 10000.0f, 1.0f, 5000.0f);
+  datalog_msg_.tfmini_range = Scale(float(ref.sensor.tfmini.range_cm), 0.0f, 300.0f, 1.0f, 0.0f);
+  #endif
+
+    /* Wheel Encoder */
+  #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
+      defined(__FMU_R_MINI_V1__)
+  datalog_msg_.ercf_installed = ref.sensor.ercf.installed;
+  datalog_msg_.ercf_healthy = ref.sensor.ercf.healthy;
+  datalog_msg_.ercf_new_data = ref.sensor.ercf.new_data;
+  datalog_msg_.ercf_angle = Scale(float(ref.sensor.ercf.angle), -360.0f, 360.0f, 1.0f, 400.0f);
   #endif
 
   /* AIN */

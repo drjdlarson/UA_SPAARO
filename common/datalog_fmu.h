@@ -200,14 +200,28 @@ struct DatalogMsg {
   uint64_t rad_alt_snr : 8;
   uint64_t rad_alt_alt_m : 11;
 
-  uint64_t opflow_installed : 1;
-  uint64_t opflow_healthy : 1;
-  uint64_t opflow_new_data : 1;
-  uint64_t opflow_sur_qual : 8;
-  uint64_t opflow_range_qual : 8;
-  uint64_t opflow_mot_x : 15;
-  uint64_t opflow_mot_y : 15;
-  uint64_t opflow_range_mm : 15;
+//   uint64_t opflow_installed : 1;
+//   uint64_t opflow_healthy : 1;
+//   uint64_t opflow_new_data : 1;
+//   uint64_t opflow_sur_qual : 8;
+//   uint64_t opflow_range_qual : 8;
+//   uint64_t opflow_mot_x : 15;
+//   uint64_t opflow_mot_y : 15;
+//   uint64_t opflow_range_mm : 15;
+
+
+  uint64_t tfmini_installed : 1;
+  uint64_t tfmini_healthy : 1;
+  uint64_t tfmini_new_data : 1;
+  uint64_t tfmini_range : 15;
+  uint64_t tfmini_intensity : 15;
+
+  uint64_t ercf_installed : 1;
+  uint64_t ercf_healthy : 1;
+  uint64_t ercf_new_data : 1;
+  uint64_t ercf_angle : 10;
+
+
   #endif
   uint64_t ain0_v : 12;
   uint64_t ain1_v : 12;
