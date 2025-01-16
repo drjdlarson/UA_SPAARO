@@ -652,14 +652,14 @@ int main(int argc, char** argv) {
         terabee_updated_7.push_back(datalog_msg_.terabee_updated_7);
         terabee_updated_8.push_back(datalog_msg_.terabee_updated_8);
 
-        terabee_range_m_1.push_back(Scale(datalog_msg_.terabee_range_m_1, 0.0f, 100.0f, 1.0f, 3000.0f));
-        terabee_range_m_2.push_back(Scale(datalog_msg_.terabee_range_m_2, 0.0f, 100.0f, 1.0f, 3000.0f));
-        terabee_range_m_3.push_back(Scale(datalog_msg_.terabee_range_m_3, 0.0f, 100.0f, 1.0f, 3000.0f));
-        terabee_range_m_4.push_back(Scale(datalog_msg_.terabee_range_m_4, 0.0f, 100.0f, 1.0f, 3000.0f));
-        terabee_range_m_5.push_back(Scale(datalog_msg_.terabee_range_m_5, 0.0f, 100.0f, 1.0f, 3000.0f));
-        terabee_range_m_6.push_back(Scale(datalog_msg_.terabee_range_m_6, 0.0f, 100.0f, 1.0f, 3000.0f));
-        terabee_range_m_7.push_back(Scale(datalog_msg_.terabee_range_m_7, 0.0f, 100.0f, 1.0f, 3000.0f));
-        terabee_range_m_8.push_back(Scale(datalog_msg_.terabee_range_m_8, 0.0f, 100.0f, 1.0f, 3000.0f));
+        terabee_range_m_1.push_back(Scale(datalog_msg_.terabee_range_m_1, 0.0f, 100.0f, 1000.0f, 0.0f));
+        terabee_range_m_2.push_back(Scale(datalog_msg_.terabee_range_m_2, 0.0f, 100.0f, 1000.0f, 0.0f));
+        terabee_range_m_3.push_back(Scale(datalog_msg_.terabee_range_m_3, 0.0f, 100.0f, 1000.0f, 0.0f));
+        terabee_range_m_4.push_back(Scale(datalog_msg_.terabee_range_m_4, 0.0f, 100.0f, 1000.0f, 0.0f));
+        terabee_range_m_5.push_back(Scale(datalog_msg_.terabee_range_m_5, 0.0f, 100.0f, 1000.0f, 0.0f));
+        terabee_range_m_6.push_back(Scale(datalog_msg_.terabee_range_m_6, 0.0f, 100.0f, 1000.0f, 0.0f));
+        terabee_range_m_7.push_back(Scale(datalog_msg_.terabee_range_m_7, 0.0f, 100.0f, 1000.0f, 0.0f));
+        terabee_range_m_8.push_back(Scale(datalog_msg_.terabee_range_m_8, 0.0f, 100.0f, 1000.0f, 0.0f));
 
         #endif
         ain0_v.push_back(Scale(datalog_msg_.ain0_v, 0.0f, 3.3f, 1240.90909090909f, 0.0f));

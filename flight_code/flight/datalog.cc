@@ -301,23 +301,23 @@ void DatalogAdd(const AircraftData &ref) {
   datalog_msg_.terabee_installed = ref.sensor.terabee.installed;
   datalog_msg_.terabee_healthy = ref.sensor.terabee.healthy;
   datalog_msg_.terabee_new_data = ref.sensor.terabee.new_data;
-  datalog_msg_.terabee_updated_1 = ref.sensor.terabee.sensor[1].updated;
-  datalog_msg_.terabee_updated_2 = ref.sensor.terabee.sensor[2].updated;
-  datalog_msg_.terabee_updated_3 = ref.sensor.terabee.sensor[3].updated;
-  datalog_msg_.terabee_updated_4 = ref.sensor.terabee.sensor[4].updated;
-  datalog_msg_.terabee_updated_5 = ref.sensor.terabee.sensor[5].updated;
-  datalog_msg_.terabee_updated_6 = ref.sensor.terabee.sensor[6].updated;
-  datalog_msg_.terabee_updated_7 = ref.sensor.terabee.sensor[7].updated;
-  datalog_msg_.terabee_updated_8 = ref.sensor.terabee.sensor[8].updated;
+  datalog_msg_.terabee_updated_1 = ref.sensor.terabee.sensor[0].updated;
+  datalog_msg_.terabee_updated_2 = ref.sensor.terabee.sensor[1].updated;
+  datalog_msg_.terabee_updated_3 = ref.sensor.terabee.sensor[2].updated;
+  datalog_msg_.terabee_updated_4 = ref.sensor.terabee.sensor[3].updated;
+  datalog_msg_.terabee_updated_5 = ref.sensor.terabee.sensor[4].updated;
+  datalog_msg_.terabee_updated_6 = ref.sensor.terabee.sensor[5].updated;
+  datalog_msg_.terabee_updated_7 = ref.sensor.terabee.sensor[6].updated;
+  datalog_msg_.terabee_updated_8 = ref.sensor.terabee.sensor[7].updated;
 
-  datalog_msg_.terabee_range_m_1 = Scale(float(ref.sensor.terabee.sensor[1].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
-  datalog_msg_.terabee_range_m_2 = Scale(float(ref.sensor.terabee.sensor[2].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
-  datalog_msg_.terabee_range_m_3 = Scale(float(ref.sensor.terabee.sensor[3].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
-  datalog_msg_.terabee_range_m_4 = Scale(float(ref.sensor.terabee.sensor[4].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
-  datalog_msg_.terabee_range_m_5 = Scale(float(ref.sensor.terabee.sensor[5].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
-  datalog_msg_.terabee_range_m_6 = Scale(float(ref.sensor.terabee.sensor[6].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
-  datalog_msg_.terabee_range_m_7 = Scale(float(ref.sensor.terabee.sensor[7].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
-  datalog_msg_.terabee_range_m_8 = Scale(float(ref.sensor.terabee.sensor[8].range_m), 0.0f, 100.0f, 1.0f, 3000.0f);
+  datalog_msg_.terabee_range_m_1 = Scale(float(ref.sensor.terabee.sensor[0].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
+  datalog_msg_.terabee_range_m_2 = Scale(float(ref.sensor.terabee.sensor[1].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
+  datalog_msg_.terabee_range_m_3 = Scale(float(ref.sensor.terabee.sensor[2].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
+  datalog_msg_.terabee_range_m_4 = Scale(float(ref.sensor.terabee.sensor[3].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
+  datalog_msg_.terabee_range_m_5 = Scale(float(ref.sensor.terabee.sensor[4].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
+  datalog_msg_.terabee_range_m_6 = Scale(float(ref.sensor.terabee.sensor[5].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
+  datalog_msg_.terabee_range_m_7 = Scale(float(ref.sensor.terabee.sensor[6].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
+  datalog_msg_.terabee_range_m_8 = Scale(float(ref.sensor.terabee.sensor[7].range_m), 0.0f, 100.0f, 1000.0f, 0.0f);
   #endif
 
   /* AIN */
