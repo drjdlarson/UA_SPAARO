@@ -88,11 +88,6 @@ void SensorsInit(const SensorConfig &cfg) {
   ext_gnss1.Init(cfg.ext_gnss1);
   ext_gnss2.Init(cfg.ext_gnss2);
 
-  data->ext_gnss1.fix = 3;
-  data->ext_num_sats = 10;
-  data->ext_gnss1.lat_rad = 0.5797f;
-  data->ext_gnss1.lon_rad = -1.5279f;
-  data->ext_gnss1.alt_wgs84_m = 0.0f;
   // opflow.Init(cfg.opflow);
   terabee.Init(cfg.terabee);
   rad_alt.Init(cfg.rad_alt);
@@ -117,6 +112,7 @@ void SensorsCal() {
 }
 
 void SensorsRead(SensorData * const data) {
+  
   if (!data) {return;}
   incept.Read(&data->inceptor);
   FmuRead(&data->fmu_imu, &data->fmu_mag, &data->fmu_static_pres);
@@ -132,6 +128,13 @@ void SensorsRead(SensorData * const data) {
         defined(__FMU_R_MINI_V1__)
   ext_gnss1.Read(&data->ext_gnss1);
   ext_gnss2.Read(&data->ext_gnss2);
+  
+  data->ext_gnss1.fix = 3;
+  data->ext_gnss1.num_sats = 10;
+  data->ext_gnss1.lat_rad = 0.5797f;
+  data->ext_gnss1.lon_rad = -1.5279f;
+  data->ext_gnss1.alt_wgs84_m = 0.0f;
+
   // opflow.Read(&data->opflow);
   terabee.Read(&data->terabee);
   #endif
