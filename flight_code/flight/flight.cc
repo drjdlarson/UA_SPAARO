@@ -62,7 +62,7 @@ void run() {
   SysRead(&data.sys);
   /* Sensor data */
   SensorsRead(&data.sensor);
-  for (uint8_t i = 0; i < 16; i++){
+  for (uint8_t i = 0; i < 8; i++){
     std::string dbg = std::to_string(data.sensor.inceptor.ch[i]) + " ";
     MsgInfo(dbg.c_str());
   }
