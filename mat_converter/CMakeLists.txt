@@ -27,7 +27,7 @@ elseif(FMU STREQUAL "MINI-V1")
 else()
   # FMU-R-V1
   add_definitions(
-    -D__FMU_R_V1__
+    -D__FMU_R_MINI_V1__
   )
 endif()
 # Fetch dependencies

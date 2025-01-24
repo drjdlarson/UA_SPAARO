@@ -219,7 +219,7 @@ struct DatalogMsg {
   uint64_t ercf_installed : 1;
   uint64_t ercf_healthy : 1;
   uint64_t ercf_new_data : 1;
-  uint64_t ercf_angle : 10;
+  uint64_t ercf_angle : 18;
 
 
   #endif

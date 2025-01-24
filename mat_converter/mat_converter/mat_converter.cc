@@ -631,13 +631,13 @@ int main(int argc, char** argv) {
         tfmini_installed.push_back(datalog_msg_.tfmini_installed);
         tfmini_healthy.push_back(datalog_msg_.tfmini_healthy);
         tfmini_new_data.push_back(datalog_msg_.tfmini_new_data);
-        tfmini_intensity.push_back(Scale(datalog_msg_.tfmini_intensity, 0.0f, 10000.0f, 100.0f, 5000.0f));
-        tfmini_range.push_back(Scale(datalog_msg_.tfmini_range, 0.0f, 300.0f, 100.0f, 0.0f));
+        tfmini_intensity.push_back(Scale(datalog_msg_.tfmini_intensity, 0.0f, 30000.0f, 1.0f, 0.0f));
+        tfmini_range.push_back(Scale(datalog_msg_.tfmini_range, 0.0f, 1000.0f, 1.0f, 0.0f));
         
         ercf_installed.push_back(datalog_msg_.ercf_installed);
         ercf_healthy.push_back(datalog_msg_.ercf_healthy);
         ercf_new_data.push_back(datalog_msg_.ercf_new_data);
-        ercf_angle.push_back(Scale(datalog_msg_.ercf_angle, -360.0f, 360.0f, 100.0f, 40000.0f));
+        ercf_angle.push_back(Scale(datalog_msg_.ercf_angle, 0.0f, 360.0f, 100.0f, 0.0f));
 
         #endif
         ain0_v.push_back(Scale(datalog_msg_.ain0_v, 0.0f, 3.3f, 1240.90909090909f, 0.0f));
@@ -1092,16 +1092,16 @@ int main(int argc, char** argv) {
   // bfs::MatWrite("opflow_mot_y", opflow_mot_y, output);
   // bfs::MatWrite("opflow_range_mm", opflow_range_mm, output);
 
-  bfs:MatWrite("tfmini_installed", tfmini_installed, output);
-  bfs:MatWrite("tfmini_healthy", tfmini_healthy, output);
-  bfs:MatWrite("tfmini_new_data", tfmini_new_data, output);
-  bfs:MatWrite("tfmini_range", tfmini_range, output);
-  bfs:MatWrite("tfmini_intensity", tfmini_intensity, output);
+  bfs::MatWrite("tfmini_installed", tfmini_installed, output);
+  bfs::MatWrite("tfmini_healthy", tfmini_healthy, output);
+  bfs::MatWrite("tfmini_new_data", tfmini_new_data, output);
+  bfs::MatWrite("tfmini_range", tfmini_range, output);
+  bfs::MatWrite("tfmini_intensity", tfmini_intensity, output);
   
-  bfs:MatWrite("ercf_installed", ercf_installed, output);
-  bfs:MatWrite("ercf_healthy", ercf_healthy, output);
-  bfs:MatWrite("ercf_new_data", ercf_new_data, output);
-  bfs:MatWrite("ercf_angle", ercf_angle, output);
+  bfs::MatWrite("ercf_installed", ercf_installed, output);
+  bfs::MatWrite("ercf_healthy", ercf_healthy, output);
+  bfs::MatWrite("ercf_new_data", ercf_new_data, output);
+  bfs::MatWrite("ercf_angle", ercf_angle, output);
   
   #endif
   bfs::MatWrite("ain0_v", ain0_v, output);
