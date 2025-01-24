@@ -33,7 +33,7 @@
 void SpaaroERCF::Init(const ERCFConfig &cfg) {
   if (cfg.device != ERCF_NONE) {
     if (!ercf_.Begin()) {
-      MsgError("Unable to establish communication with tfmini");
+      MsgError("Unable to establish communication with ercf");
     } else {
       installed_ = true;
     }

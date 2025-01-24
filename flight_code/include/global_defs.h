@@ -146,15 +146,6 @@ struct RadAltConfig {
   RadAlt device = RAD_ALT_NONE;
 };
 
-// enum OpFlow {
-//   OPFLOW_NONE,
-//   OPFLOW_MATEK3901
-// };
-
-// struct OpFlowConfig{
-//   OpFlow device = OPFLOW_NONE;
-// };
-
 enum TFMini {
   TFMini_NONE,
   TFMini_MAKERFOCUS
@@ -194,7 +185,7 @@ struct SensorConfig {
   PresConfig ext_pres4;
   #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
       defined(__FMU_R_MINI_V1__)
-  // OpFlowConfig opflow;
+      
   TFMiniConfig tfmini;
   ERCFConfig ercf;
   RadAltConfig rad_alt;
@@ -374,12 +365,12 @@ struct SysData {
   int64_t sys_time_us;
 };
 
-struct InceptorData {
+struct InceptorData { // spoofing data
   static constexpr int8_t max_ch = 16;
-  bool new_data;
-  bool lost_frame;
-  bool failsafe;
-  std::array<int16_t, max_ch> ch;
+  bool new_data = true;
+  bool lost_frame = false;
+  bool failsafe = false;
+  std::array<int16_t, max_ch> ch = {10, 20, 30, 40, 50, 60, 70, 80, 90, 10, 20, 30, 40, 50, 60}; 
 };
 
 struct ImuData {
@@ -399,17 +390,6 @@ struct MagData {
   float mag_ut[3];
 };
 
-// struct OpFlowData {
-//   bool installed = false;
-//   bool healthy;
-//   bool new_data;
-//   int32_t mot_x;
-//   int32_t mot_y;
-//   uint8_t sur_qual;
-//   int32_t range_mm;
-//   uint8_t range_qual;
-// };
-
 struct TFMiniData {
   bool installed = false;
   bool healthy;
@@ -422,29 +402,29 @@ struct ERCFData {
   bool installed = false;
   bool healthy;
   bool new_data;
-  float angle;
+  float angle = 30.0f;
 };
 
-struct GnssData {
-  bool installed = false;
-  bool healthy;
-  bool new_data;
-  bool rel_pos_avail;
-  bool rel_pos_moving_baseline;
-  bool rel_pos_baseline_normalized;
-  int8_t fix;
-  int8_t num_sats;
-  int16_t gps_week;
-  float alt_wgs84_m;
-  float horz_acc_m;
-  float vert_acc_m;
-  float vel_acc_mps;
-  float ned_vel_mps[3];
-  float rel_pos_acc_ned_m[3];
-  double gps_tow_s;
-  double lat_rad;
-  double lon_rad;
-  double rel_pos_ned_m[3];
+struct GnssData { // spoofing data
+  bool installed = true;
+  bool healthy = true;
+  bool new_data = true;
+  bool rel_pos_avail = true;
+  bool rel_pos_moving_baseline = false;
+  bool rel_pos_baseline_normalized = false;
+  int8_t fix = 3;
+  int8_t num_sats = 10;
+  int16_t gps_week = 2;
+  float alt_wgs84_m = 0.0f;
+  float horz_acc_m = 0.0f;
+  float vert_acc_m = 0.0f;
+  float vel_acc_mps = 0.0f;
+  float ned_vel_mps[3] = {0.0f, 0.0f, 0.0f};
+  float rel_pos_acc_ned_m[3] = {0.0f, 0.0f, 0.0f};
+  double gps_tow_s = 0.0f;
+  double lat_rad = 0.5797f;
+  double lon_rad = -1.5279f;
+  double rel_pos_ned_m[3] = {0.0f, 0.0f, 0.0f};
 };
 
 struct PresData {
@@ -497,7 +477,6 @@ struct SensorData {
   PresData ext_pres4;
   #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
       defined(__FMU_R_MINI_V1__)
-  // OpFlowData opflow;
   TFMiniData tfmini;
   ERCFData ercf;
   RadAltData rad_alt;

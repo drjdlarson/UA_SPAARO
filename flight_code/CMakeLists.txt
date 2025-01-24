@@ -260,12 +260,6 @@ FetchContent_Declare(
   GIT_TAG v2.0.2
 )
 FetchContent_MakeAvailable(imap)
-# FetchContent_Declare(
-#   matek3901
-#   GIT_REPOSITORY https://github.com/TL-4319/matek3901
-#   GIT_TAG v1.1.0
-# )
-# FetchContent_MakeAvailable(matek3901)
 FetchContent_Declare(
   tfmini
   GIT_REPOSITORY https://github.com/ardymarky/tfmini.git
@@ -275,7 +269,7 @@ FetchContent_MakeAvailable(tfmini)
 FetchContent_Declare(
   ercf
   GIT_REPOSITORY https://github.com/ardymarky/ercf.git
-  GIT_TAG v1.0.1
+  GIT_TAG v1.0.0
 )
 FetchContent_MakeAvailable(ercf)
 # Add the executable
@@ -301,7 +295,6 @@ add_executable(flight
   include/drivers/spaaro-sbus.h
   include/drivers/analog.h
   include/drivers/spaaro-vector-nav.h
-  # include/drivers/spaaro-matek3901.h
   include/drivers/spaaro-tfmini.h
   include/drivers/spaaro-ercf.h
   flight/flight.cc
@@ -324,7 +317,6 @@ add_executable(flight
   drivers/spaaro-sbus.cc
   drivers/analog.cc
   drivers/spaaro-vector-nav.cc
-  # drivers/spaaro-matek3901.cc
   drivers/spaaro-tfmini.cc
   drivers/spaaro-ercf.cc
 )

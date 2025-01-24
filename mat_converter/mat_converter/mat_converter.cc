@@ -631,13 +631,13 @@ int main(int argc, char** argv) {
         tfmini_installed.push_back(datalog_msg_.tfmini_installed);
         tfmini_healthy.push_back(datalog_msg_.tfmini_healthy);
         tfmini_new_data.push_back(datalog_msg_.tfmini_new_data);
-        tfmini_intensity.push_back(Scale(datalog_msg_.tfmini_intensity, 0.0f, 10000.0f, 1.0f, 5000.0f));
-        tfmini_range.push_back(Scale(datalog_msg_.tfmini_range, 0.0f, 300.0f, 1.0f, 0.0f));
+        tfmini_intensity.push_back(Scale(datalog_msg_.tfmini_intensity, 0.0f, 10000.0f, 100.0f, 5000.0f));
+        tfmini_range.push_back(Scale(datalog_msg_.tfmini_range, 0.0f, 300.0f, 100.0f, 0.0f));
         
         ercf_installed.push_back(datalog_msg_.ercf_installed);
         ercf_healthy.push_back(datalog_msg_.ercf_healthy);
         ercf_new_data.push_back(datalog_msg_.ercf_new_data);
-        ercf_angle.push_back(Scale(datalog_msg_.ercf_angle, -360.0f, 360.0f, 1.0f, 400.0f));
+        ercf_angle.push_back(Scale(datalog_msg_.ercf_angle, -360.0f, 360.0f, 100.0f, 40000.0f));
 
         #endif
         ain0_v.push_back(Scale(datalog_msg_.ain0_v, 0.0f, 3.3f, 1240.90909090909f, 0.0f));

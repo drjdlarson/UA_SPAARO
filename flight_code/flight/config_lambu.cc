@@ -46,9 +46,6 @@ AircraftConfig config = {
     .ext_gnss2 = {
       .baud = 921600
     },
-    // .opflow = {
-    //   .device = OPFLOW_MATEK3901
-    // },
     .tfmini = {
       .device = TFMini_MAKERFOCUS
     },
@@ -66,9 +63,10 @@ AircraftConfig config = {
     .gnss_source = INS_GNSS_EXT_GNSS1,
     .accel_cutoff_hz = 40.0f,
     .gyro_cutoff_hz = 40.0f,
+    .hardcoded_heading = 4.71239f
     // Match with lambu GNSS, 31.395 cm or 0.31395 meters
     // (x longitudinal, y lateral, z)
-    .antenna_baseline_m = (Eigen::Vector3f() << 0.31395f, 0.31395f, 0.0f).finished()
+    // .antenna_baseline_m = (Eigen::Vector3f() << 0.31395f, 0.31395f, 0.0f).finished()
   },
   .telem = {
     .baud = 57600,

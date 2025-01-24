@@ -306,8 +306,8 @@ void DatalogAdd(const AircraftData &ref) {
   datalog_msg_.tfmini_installed = ref.sensor.tfmini.installed;
   datalog_msg_.tfmini_healthy = ref.sensor.tfmini.healthy;
   datalog_msg_.tfmini_new_data = ref.sensor.tfmini.new_data;
-  datalog_msg_.tfmini_intensity = Scale(float(ref.sensor.tfmini.range_intensity), 0.0f, 10000.0f, 1.0f, 5000.0f);
-  datalog_msg_.tfmini_range = Scale(float(ref.sensor.tfmini.range_cm), 0.0f, 300.0f, 1.0f, 0.0f);
+  datalog_msg_.tfmini_intensity = Scale(float(ref.sensor.tfmini.range_intensity), 0.0f, 10000.0f, 100.0f, 5000.0f);
+  datalog_msg_.tfmini_range = Scale(float(ref.sensor.tfmini.range_cm), 0.0f, 300.0f, 100.0f, 0.0f);
   #endif
 
     /* Wheel Encoder */
@@ -316,7 +316,7 @@ void DatalogAdd(const AircraftData &ref) {
   datalog_msg_.ercf_installed = ref.sensor.ercf.installed;
   datalog_msg_.ercf_healthy = ref.sensor.ercf.healthy;
   datalog_msg_.ercf_new_data = ref.sensor.ercf.new_data;
-  datalog_msg_.ercf_angle = Scale(float(ref.sensor.ercf.angle), -360.0f, 360.0f, 1.0f, 400.0f);
+  datalog_msg_.ercf_angle = Scale(float(ref.sensor.ercf.angle), -360.0f, 360.0f, 100.0f, 40000.0f);
   #endif
 
   /* AIN */

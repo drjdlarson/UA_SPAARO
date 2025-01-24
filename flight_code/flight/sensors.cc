@@ -51,21 +51,20 @@ SpaaroAms5915 ext_pres4(&I2C_BUS);
 #if defined(__FMU_R_V1__)
 SpaaroUbx ext_gnss1(&GNSS_UART);
 #elif defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__)
-SpaaroUbx ext_gnss1(&GNSS1_UART);
-SpaaroUbx ext_gnss2(&GNSS2_UART);
+// SpaaroUbx ext_gnss1(&GNSS1_UART);
+// SpaaroUbx ext_gnss2(&GNSS2_UART);
 #elif defined(__FMU_R_MINI_V1__)
-SpaaroUbx ext_gnss1(&GNSS1_UART);
-SpaaroUbx ext_gnss2(&GNSS2_UART);
+// SpaaroUbx ext_gnss1(&GNSS1_UART);
+// SpaaroUbx ext_gnss2(&GNSS2_UART);
+
 #endif
 #if defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__)
-// SpaaroMatek3901 opflow(&AUX_UART);
-SpaaroTFMini tfmini(&AUX_UART);
-SpaaroERCF ercf(&GNSS_UART);
-SpaaroAinsteinUsd1 rad_alt(&GNSS2_UART); // Changed port for compatibility. Need to redo
-#elif defined(__FMU_R_MINI_V1__)
-// SpaaroMatek3901 opflow(&AUX_UART);
 SpaaroTFMini tfmini(&AUX_UART);
 SpaaroERCF ercf(&GNSS1_UART);
+SpaaroAinsteinUsd1 rad_alt(&GNSS2_UART); // Changed port for compatibility. Need to redo
+#elif defined(__FMU_R_MINI_V1__)
+SpaaroTFMini tfmini(&GNSS1_UART);
+SpaaroERCF ercf(&AUX_UART);
 SpaaroAinsteinUsd1 rad_alt(&GNSS2_UART);
 #endif
 SpaaroSbus incept(&SBUS_UART);
@@ -76,7 +75,7 @@ inline constexpr int32_t CAL_TIME_MS = 5000;
 
 void SensorsInit(const SensorConfig &cfg) {
   MsgInfo("Initializing sensors...");
-  incept.Init();
+  // incept.Init();
   FmuInit(cfg.fmu);
   ext_mag.Init(cfg.ext_mag);
   ext_pres1.Init(cfg.ext_pres1);
@@ -87,8 +86,8 @@ void SensorsInit(const SensorConfig &cfg) {
   ext_gnss1.Init(cfg.ext_gnss1);
   #elif defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
         defined(__FMU_R_MINI_V1__)
-  ext_gnss1.Init(cfg.ext_gnss1);
-  ext_gnss2.Init(cfg.ext_gnss2);
+  // ext_gnss1.Init(cfg.ext_gnss1);
+  // ext_gnss2.Init(cfg.ext_gnss2);
   tfmini.Init(cfg.tfmini);
   ercf.Init(cfg.ercf);
   rad_alt.Init(cfg.rad_alt);
@@ -114,20 +113,29 @@ void SensorsCal() {
 
 void SensorsRead(SensorData * const data) {
   if (!data) {return;}
-  incept.Read(&data->inceptor);
+  // incept.Read(&data->inceptor);
   FmuRead(&data->fmu_imu, &data->fmu_mag, &data->fmu_static_pres);
   AnalogRead(&data->analog);
+  
   ext_mag.Read(&data->ext_mag);
   ext_pres1.Read(&data->ext_pres1);
   ext_pres2.Read(&data->ext_pres2);
   ext_pres3.Read(&data->ext_pres3);
   ext_pres4.Read(&data->ext_pres4);
+  
   #if defined(__FMU_R_V1__)
   ext_gnss1.Read(&data->ext_gnss1);
   #elif defined(__FMU_R_V2__) || defined(__FMU_R_V2_BETA__) || \
         defined(__FMU_R_MINI_V1__)
-  ext_gnss1.Read(&data->ext_gnss1);
-  ext_gnss2.Read(&data->ext_gnss2);
+  // ext_gnss1.Read(&data->ext_gnss1);
+  // ext_gnss2.Read(&data->ext_gnss2);
+
+  data->ext_gnss1.fix = 3;
+  data->ext_gnss1.num_sats = 10;
+  data->ext_gnss1.lat_rad = 0.5797f;
+  data->ext_gnss1.lon_rad = -1.5279f;
+  data->ext_gnss1.alt_wgs84_m = 0.0f;
+  
   tfmini.Read(&data->tfmini);
   ercf.Read(&data->ercf);
   #endif

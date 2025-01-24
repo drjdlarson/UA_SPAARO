@@ -46,6 +46,7 @@ void SpaaroTFMini::Read(TFMiniData * const data) {
   data->installed = installed_;
   if (data->installed) {
     data->new_data = tfmini_.Read();
+    
     if (data->new_data) {
       t_healthy_ms_ = 0;
       data->range_cm = tfmini_.dist();

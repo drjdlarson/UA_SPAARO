@@ -62,11 +62,12 @@ void run() {
   SysRead(&data.sys);
   /* Sensor data */
   SensorsRead(&data.sensor);
-  for (uint8_t i = 0; i < 16; i++){
-    std::string dbg = std::to_string(data.sensor.inceptor.ch[i]) + " ";
-    MsgInfo(dbg.c_str());
-  }
-  MsgInfo("\n");
+
+  // delete this before final release 
+  Serial.print(data.sensor.ercf.angle);
+  Serial.print("\t");
+  Serial.println(data.sensor.tfmini.range_cm);
+
   //std::string dbg = std::to_string((int)data.sensor.power_module.voltage_v * 100) + "\n";
   //MsgInfo(dbg.c_str());
   /* VectorNav */
@@ -102,7 +103,7 @@ int main() {
   // Hack to pause the main program until beacon finish booting up
   elapsedMillis t_ms;
   t_ms = 0;
-  while (t_ms < 10000.0f) {
+  while (t_ms < 1000.0f) {
   }
   /* Init sensors */
   SensorsInit(config.sensor);
@@ -131,7 +132,7 @@ int main() {
   std::string dbg = std::to_string(data.telem.num_waypoints);
   MsgInfo(dbg.c_str());
   /* Attach data ready interrupt */
-  attachInterrupt(IMU_DRDY, run, RISING);\
+  attachInterrupt(IMU_DRDY, run, RISING);
   while (1) {
     /* Flush datalog */
     DatalogFlush();
